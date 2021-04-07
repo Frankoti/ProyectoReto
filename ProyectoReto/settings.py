@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'ProyectoReto.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'bd_reto',
+        'USER':'root',
+        'PASSWORD': 'root',
+        'HOST':'localhost',
+        'port': 3306,
     }
 }
 
