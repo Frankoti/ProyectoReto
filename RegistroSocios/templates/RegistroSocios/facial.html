@@ -1,0 +1,68 @@
+{% extends 'RegistroSocios/base.html' %}
+{%block title%}registro{%endblock%}
+{% block contenido %}
+{% load static %}
+<link rel="stylesheet" href='{% static "/css/form.css"%}'>
+<div align=center class="video-wrap">
+		    <video id="video" playsinline autoplay></video>
+</div>
+
+        <div align=center class="item">
+			<label class="item" for="fotoperfil"><h2>Subir foto perfil</h2></label>
+           <form name="subida-imagenes" type="POST" enctype="multipart/formdata" >
+            <input type="file" name="imagen1" />
+           </form>
+        </div>
+		<!-- Trigger canvas web API -->
+		<div align=center class="controller">
+		    <button type="submit" id="snap">Capture</button>
+		</div>
+
+		<!-- Webcam video snapshot -->
+		<canvas id="canvas" width="640" height="480"></canvas>
+
+
+	<script type="text/javascript">
+		'use strict';
+
+		const video = document.getElementById('video');
+		const canvas = document.getElementById('canvas');
+		const snap = document.getElementById("snap");
+		const errorMsgElement = document.querySelector('span#errorMsg');
+
+		const constraints = {
+		  audio: false,
+		  video: {
+		    width: 640, height: 480
+		  }
+		};
+
+		// Access webcam
+		async function init() {
+		  try {
+		    const stream = await navigator.mediaDevices.getUserMedia(constraints);
+		    handleSuccess(stream);
+		  } catch (e) {
+		    errorMsgElement.innerHTML = `navigator.getUserMedia error:${e.toString()}`;
+		  }
+		}
+
+		// Success
+		function handleSuccess(stream) {
+		  window.stream = stream;
+		  video.srcObject = stream;
+		}
+
+		// Load init
+		init();
+
+		// Draw image
+		var context = canvas.getContext('2d');
+		snap.addEventListener("click", function() {
+		        context.drawImage(video, 0, 100, 640, 480);
+
+		});
+	</script>
+
+
+{%endblock%}

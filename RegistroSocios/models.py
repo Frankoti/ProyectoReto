@@ -34,7 +34,7 @@ class Persona(models.Model):
     telefono= models.IntegerField()
     condicion_civil= models.CharField(max_length=30)
     puesto_idpuesto= models.ForeignKey(Puesto, on_delete=models.CASCADE, db_column= "idpuesto")
-    categoria_idcategoria= models.ForeignKey(Categoria, on_delete=models.CASCADE, db_column="idcascade")
+    categoria_idcategoria= models.ForeignKey(Categoria, on_delete=models.CASCADE, db_column="idcategoria")
 
     class Meta:
         db_table = "persona"
