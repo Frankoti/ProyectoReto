@@ -1,5 +1,6 @@
 # Create your models here.
 from django.db import models
+from django.core.validators import MaxValueValidator
 
 # Create your models here.
 
@@ -29,6 +30,7 @@ class Persona(models.Model):
     idpersona = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=30)
     apellido = models.CharField(max_length=30)
+    cedula = models.IntegerField(null=True)
     genero = models.CharField(max_length=30)
     direccion = models.CharField(max_length=30)
     telefono= models.IntegerField()

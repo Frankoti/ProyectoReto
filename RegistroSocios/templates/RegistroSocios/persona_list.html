@@ -1,0 +1,52 @@
+{% extends 'RegistroSocios/base.html' %}
+{%block title%}registro{%endblock%}
+{% block contenido %}
+{% load static %}
+  <link href="{% static 'css/sb-admin-2.min.css'%}" rel="stylesheet">
+  <link href="{% static 'css/sb-admin-2.css'%}" rel="stylesheet">
+
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 align="center" class="m-0 font-weight-bold text-primary">Listado de Empleados y Socios</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table cellspacing="0" class="table table-bordered table-hover" id="dtBasicExample">
+                <thead class="bg-gradient-primary">
+                <tr class="text-light text-center">
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Cedula</th>
+                    <th>Genero</th>
+                    <th>Direccion</th>
+                    <th>Puesto</th>
+                    <th>Categoria</th>
+                    <th>Editar</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for persona in object_list %}
+                <tr class="text-dark">
+                    <td>{{persona.nombre}}</td>
+                    <td>{{persona.apellido}}</td>
+                    <td>{{persona.cedula}}</td>
+                    <td>{{persona.genero}}</td>
+                    <td>{{persona.direccion}}</td>
+                    <td>{{persona.puesto_idpuesto.nombre}}</td>
+                    <td>{{persona.categoria_idcategoria.nombre}}</td>
+                    <td align="center">
+                        <a class="btn bg-gradient-primary text-light"
+                           onclick="modal(#)" title="Editar"><i class="fas fa-info-circle"></i></a>
+
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{%endblock%}

@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from RegistroSocios import views
-from RegistroSocios.views import PersonaCreate
+from RegistroSocios.views import PersonaCreate, PersonasListView
 #from django.conf.urls import url
 #from RegistroSocios.credencial import  lectorqr
 
@@ -27,4 +27,5 @@ urlpatterns = [
     path('facial/', views.facial),
     path('registro/', PersonaCreate.as_view(), name='crear_registro'),
     path('qr/', views.qr, name= 'codigoqr'),
+    path('listado/', PersonasListView.as_view(), name='listado'),
 ]

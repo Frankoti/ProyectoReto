@@ -4,6 +4,8 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from RegistroSocios.models import Persona
+from django.utils import timezone
+from django.views.generic.list import ListView
 from django.contrib.admin.views.decorators import staff_member_required
 from django.utils.decorators import method_decorator
 #mixin - tarea
@@ -21,7 +23,11 @@ def qr(request):
 
 class PersonaCreate(CreateView,):
     model = Persona
-    fields = ['nombre','apellido','genero','direccion','telefono','condicion_civil', 'puesto_idpuesto', 'categoria_idcategoria']
+    fields = ['nombre','apellido', 'cedula', 'genero','direccion','telefono','condicion_civil', 'puesto_idpuesto', 'categoria_idcategoria']
     success_url = reverse_lazy('crear_registro')
+
+class PersonasListView(ListView):
+    model = Persona
+
 
 

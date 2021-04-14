@@ -3,20 +3,33 @@
 {% block contenido %}
 {% load static %}
 <link rel="stylesheet" href='{% static "/css/form.css"%}'>
-<div align=center class="video-wrap">
-		    <video id="video" playsinline autoplay></video>
-</div>
+<link href='{% static "/css/style.css"%}' rel="stylesheet">
 
-        <div align=center class="item">
-			<label class="item" for="fotoperfil"><h2>Subir foto perfil</h2></label>
-           <form name="subida-imagenes" type="POST" enctype="multipart/formdata" >
-            <input type="file" name="imagen1" />
-           </form>
+
+ <section id="hero">
+    <div class="hero-container">
+      <div class="wow fadeIn">
+
+
+        <h2><span class="rotating">Acerca tu rostro a la cámara</span></h2>
+        <div class="actions">
+
+			<div align=center class="video-wrap">
+				<video id="video" playsinline autoplay></video>
+			</div>
+
+
+			<!-- Trigger canvas web API -->
+			<div align=center class="btn-get-started">
+				<button type="submit" id="snap">Capture</button>
+			</div>
+
         </div>
-		<!-- Trigger canvas web API -->
-		<div align=center class="controller">
-		    <button type="submit" id="snap">Capture</button>
-		</div>
+
+      </div>
+    </div>
+  </section>
+
 
 		<!-- Webcam video snapshot -->
 		<canvas id="canvas" width="640" height="480"></canvas>
